@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Dish Selector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Random Dish Selector</h1>
+    <p>What do we eat today?</p>
+    <select id="categories" class="options"></select>
+    <select id="types" class="options"></select>
+    <button id="select-dish-btn">Generate</button>
+    <h2 id="dish-result"></h2>
+    <div style="display: flex; align-items: center;">
+        <input type="checkbox" id="choice">
+        <label for="choice" style="margin-left: 5px;">I like this choice!</label>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

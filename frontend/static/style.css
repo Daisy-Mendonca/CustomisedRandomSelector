@@ -1,0 +1,62 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: antiquewhite;
+    flex-direction: column;
+}
+button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color:cadetblue;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 15px;
+    border: none;
+    padding: 15px 32px;
+}
+
+button.selected {
+    border: red 2px solid;
+    background-color: lightcoral;
+    transform: scale(1.05); /* slight pop effect */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+h1{
+    color: cadetblue;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bolder;
+    width: 100%;
+    position: relative;
+}
+p{
+    font-size: normal;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
+    font-size: 20px;
+}
+
+#dish-result{
+    font-size: 30px;
+    font-weight: bold;
+    color:blueviolet;
+    margin-top: 10px;
+}
+
+.options{
+    padding: 10px 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 130px;
+    background-color: cadetblue;
+    border: none;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+input[type="checkbox"] {
+    outline: 3px solid black;
+}
