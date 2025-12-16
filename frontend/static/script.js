@@ -12,6 +12,7 @@ fetch("/get-categories")
             category.textContent = element;
             dropdown.appendChild(category);
         });
+        loadSelectionStatus();
     })
     .catch(error => console.error('Error:', error));
 fetch("/get-types")
@@ -25,6 +26,7 @@ fetch("/get-types")
             type.textContent = element;
             dropdown.appendChild(type);
         });
+        updateDropdownStatus();
     })
     .catch(error => console.error('Error:', error));
 
@@ -66,4 +68,46 @@ likeCheckbox.addEventListener("change", () => {
         },
         body : JSON.stringify({liked: likeCheckbox.checked, dish:dish})
     })
+    .then(() => {
+        const category = document.getElementById("categories").value;
+        selectionStatus[category] = true;
+        updateCheckboxState();
+    });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateDropdownStatus();
+});
+document.getElementById("categories").addEventListener("change", () => {
+    updateCheckboxState();
+});
+
+
+let selectionStatus = {
+    Breakfast: false,
+    Meal: false
+};
+
+function loadSelectionStatus() {
+    fetch("/selection-status")
+        .then(res => res.json())
+        .then(status => {
+            selectionStatus = status;
+            updateCheckboxState();
+        });
+}
+
+function updateCheckboxState() {
+    const selectedCategory = document.getElementById("categories").value;
+    const likeCheckbox = document.getElementById("choice");
+
+    if (selectionStatus[selectedCategory]) {
+        likeCheckbox.checked = true;
+        likeCheckbox.disabled = true;
+    } else {
+        likeCheckbox.checked = false;
+        likeCheckbox.disabled = false;
+    }
+}
+
+

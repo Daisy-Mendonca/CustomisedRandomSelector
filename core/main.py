@@ -46,5 +46,13 @@ def like_choice():
     print(f"User liked the choice: {liked}")
     return jsonify({"status": "success"}), 200
 
+@app.route('/selection-status', methods=['GET'])
+def selection_status():
+    df = data_reader.read_data_db()
+    return jsonify({
+        "Breakfast": RandomSelector().food_selected_today(df, "Breakfast"),
+        "Meal": RandomSelector().food_selected_today(df, "Meal")
+    })
+
 if __name__ == "__main__":
     app.run(debug=True, port=8000, use_reloader=False)
