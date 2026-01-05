@@ -6,7 +6,7 @@ from flask import request
 
 from backend.src.data_reader import DataReader
 from backend.src.update_entry import new_timestamp
-from backend.services.settings import FILE_PATH
+from backend.services.settings import FILE_PATH, PORT
 
 template_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../frontend/templates')
 static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../frontend/static')
@@ -54,5 +54,15 @@ def selection_status():
         "Meal": RandomSelector().food_selected_today(df, "Meal")
     })
 
+@app.route("/health")
+def health():
+    return {"status": "ok"}, 200
+
+
 if __name__ == "__main__":
-    app.run(debug=True, port=8000, use_reloader=False)
+    #app.run(host="0.0.0.0", port=8000, debug=True, use_reloader=False)
+    app.run(
+    host="0.0.0.0",
+    port=PORT,
+    debug=True
+)
