@@ -29,5 +29,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/daisy/item-generator:latest
+        tags: ghcr.io/daisy_mendonca/item-generator:latest
         file: ./Dockerfile
