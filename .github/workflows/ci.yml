@@ -35,3 +35,17 @@ jobs:
           IMAGE="ghcr.io/${OWNER_LC}/item-generator:latest"
           docker build -t $IMAGE .
           docker push $IMAGE
+
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'v1.34.1'
+
+    - name: Configure Kubeconfig
+      run: |
+        echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
+
+    - name: Deploy to Kubernetes
+      run: |
+        kubectl apply -f k8s/web_deployment.yaml
+        kubectl apply -f k8s/web_service.yaml

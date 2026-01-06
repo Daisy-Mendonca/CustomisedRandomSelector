@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: ghcr.io/daisy-mendonca/item-generator:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_HOST
+              value: host.docker.internal
+            - name: DB_USER
+              value: daisy
+            - name: DB_PASS
+              value: mypassword
+            - name: DB_NAME
+              value: food
+      imagePullSecrets:
+      - name: ghcr-secret

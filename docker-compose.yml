@@ -19,10 +19,10 @@ services:
     ports:
       - "8000:8000"
     environment:
-      POSTGRES_HOST: db
-      POSTGRES_USER: daisy
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: food
+      DB_HOST: db
+      DB_USER: daisy
+      DB_PASS: mypassword
+      DB_NAME: food
     depends_on:
       - db
 volumes:
