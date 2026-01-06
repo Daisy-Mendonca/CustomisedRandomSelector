@@ -29,5 +29,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ github.daisy }}/item-generator:latest
+        tags: ghcr.io/daisy/item-generator:latest
         file: ./Dockerfile
