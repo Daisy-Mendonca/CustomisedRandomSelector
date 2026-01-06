@@ -25,9 +25,7 @@ jobs:
         password: ${{ secrets.GHCR_TOKEN }}
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        push: true
-        tags: ghcr.io/daisy_mendonca/item-generator:latest
-        file: ./Dockerfile
+      run: |
+        echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+      env:
+        OWNER: '${{ github.repository_owner }}'
